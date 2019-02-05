@@ -2,11 +2,27 @@
 @color-rouge-miage: #CA182F;
 @color-blanc-gris: #eee;
 
+@color-snapchat: #F7F400;
+@color-facebook: #4267B2;
+@color-linkedin: #0077B5;
+@color-twitter: #1C9CEA;
+@color-mail: #303030;
 
-body {
-	margin:0;
+.fontBase {
 	font-family: "Raleway", sans-serif;
 	font-size: 14px;
+}
+
+.lineTitle {
+	font-family: 'Open Sans';
+	font-size: 26px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+body {
+	.fontBase;
+	margin:0;
 	color: #333;
 	display: flex;
 	flex-direction: column;
@@ -22,16 +38,18 @@ body {
 
 .ligne {
 	width:100%;
+
 	.container {
 		width: 1170px;
 		margin: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
 		h2 {
-			text-transform: uppercase;
-			font-weight: 700;
-			margin: 0;
-			font-family: 'Open Sans';
-			font-size: 26px;
+			.lineTitle;
 			margin: 20px auto;
+			color: #eee;
 		}
 	}
 }
@@ -41,10 +59,6 @@ body {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	background-color: @color-rouge-miage;
-
-	.container {
-		display: flex;
-	}
 
 	img {
 		margin: auto;
@@ -72,13 +86,79 @@ body {
 	background-color: #357AB7;
 
 	.newsFeed {
-		display: none;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		width: 100%;
+	}
+
+	.newsItem {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		width: 22%;
+		min-width: 22%;
+		margin: 0 3% 3% 5%;
+
+		background-color: #eee;
+
+		.textDiv{
+			width: 100%;
+			padding: 10px 0;
+			text-align: center;
+			border-top: 1px solid #000;
+		}
+
+		.illus {
+			width: 100%;
+			img {
+				width:100%;
+			}
+		}
+
+		.title {
+			.textDiv;
+			font-weight: bold;
+			background-color: #eee;
+			font-size: 120%;
+			border-top: 0;
+		}
+
+		.place {
+			.textDiv;
+		}
+
+		.date {
+			.textDiv;
+		}
+
+		.message {
+			.textDiv;
+			background-color: #eee;
+		}
+
+		.fblink {
+			.textDiv;
+			line-height: 170%;
+			vertical-align: baseline;
+			i {
+				color: @color-facebook;
+				font-size: 170%;
+			}
+		}
+
+
+
+
 	}
 
 }
 
 .ligne#formation{
-	background-color: #16B84E;
+	background-color: #79DACA;
 }
 
 .ligne#bureau{
@@ -86,23 +166,16 @@ body {
 }
 
 .ligne#contact{
-	@color-snapchat: #F7F400;
-	@color-facebook: #4267B2;
-	@color-linkedin: #0077B5;
-	@color-twitter: #1C9CEA;
-	@color-mail: #303030;
-
 	background-color: @color-mail;
 
 	.container{
-		display: flex;
 		flex-direction: row;
-		align-items: center;
 
 		.contactezNous{
-			font-size: 300%;
+			.lineTitle;
 			color: @color-blanc-gris;
 			margin-right: 30px;
+
 		}
 
 		.reseau(@couleurReseau){
@@ -142,17 +215,24 @@ body {
 	.container {
 		display: flex;
 		flex-direction: row;
+		align-items: flex-start;
 		margin-top: 20px;
 		margin-bottom: 20px;
+
 		.col {
 			width: 33%;
+			display: flex;
+			flex-direction: row;
+
+			i {
+				padding-right: 10px;
+			}
+
 		}
 	}
 
 	.category{
 		font-weight: bold;
-		margin-bottom: 10px;
-		font-size: 110%;
 	}
 
 	p {
