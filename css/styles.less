@@ -4,36 +4,27 @@
 
 
 body {
+	margin:0;
 	font-family: "Raleway", sans-serif;
 	font-size: 14px;
 	color: #333;
+	display: flex;
+	flex-direction: column;
 
 	p {
 		margin: 0;
 	}
 
-	a, a:hover {
+	a, a:hover,a:focus,a:visited {
 		text-decoration: none;
 	}
-
-}
-
-.jumbotron#index {
-	margin-bottom: 0;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	background-color: @color-rouge-miage;
-	min-height: 300px;
-
-	img {
-		margin: 0% auto;
-	}
-
 }
 
 .ligne {
+	width:100%;
 	.container {
-		text-align: center;
+		width: 1170px;
+		margin: auto;
 		h2 {
 			text-transform: uppercase;
 			font-weight: 700;
@@ -45,6 +36,22 @@ body {
 	}
 }
 
+.ligne#index {
+	margin-bottom: 0;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: @color-rouge-miage;
+
+	.container {
+		display: flex;
+	}
+
+	img {
+		margin: auto;
+	}
+
+}
+
 .ligne#construction {
 	background-color: #F4C430;
 }
@@ -53,8 +60,9 @@ body {
 	background-color: #FFF;
 
 	p {
+		width: 65%;
 		font-size: 130%;
-		margin: 25px 0;
+		margin: 25px auto;
 		text-align: center;
 	}
 
@@ -62,6 +70,11 @@ body {
 
 .ligne#news{
 	background-color: #357AB7;
+
+	.newsFeed {
+		display: none;
+	}
+
 }
 
 .ligne#formation{
@@ -73,42 +86,36 @@ body {
 }
 
 .ligne#contact{
-	background-color: #303030;
+	@color-snapchat: #F7F400;
+	@color-facebook: #4267B2;
+	@color-linkedin: #0077B5;
+	@color-twitter: #1C9CEA;
+	@color-mail: #303030;
+
+	background-color: @color-mail;
 
 	.container{
 		display: flex;
 		flex-direction: row;
-	}
+		align-items: center;
 
-	.formulaire {
-		min-height: 450px;
-		width: 50%;
-	}
-
-	.reseaux {
-		font-size: 500%;
-		display: flex;
-		flex-wrap: wrap;
-		width: 50%;
-
-		@color-snapchat: #F7F400;
-		@color-facebook: #4267B2;
-		@color-linkedin: #0077B5;
-		@color-twitter: #1C9CEA;
+		.contactezNous{
+			font-size: 300%;
+			color: @color-blanc-gris;
+			margin-right: 30px;
+		}
 
 		.reseau(@couleurReseau){
-			width: 50%;
-			a{
+			flex:1;
+			background-color: @couleurReseau;
+			font-size: 500%;
+			a {
 				width: 100%;
 				height: 100%;
 				color: @color-blanc-gris;
 				display: flex;
-				i {
-					margin: auto;
-				}
-
+				i { margin: 50px auto; }
 			}
-			background-color: @couleurReseau;
 			&:hover {
 				background-color: @color-blanc-gris;
 				a {
@@ -121,12 +128,35 @@ body {
 		.facebook {.reseau(@color-facebook);}
 		.linkedin {.reseau(@color-linkedin);}
 		.twitter {.reseau(@color-twitter);}
-
+		.mail {.reseau(@color-mail);}
 
 	}
 
 }
 
 .ligne#footer{
-	background-color: #333;
+	text-align: left !important;
+	color: @color-blanc-gris;
+	background-color: #202020;
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		.col {
+			width: 33%;
+		}
+	}
+
+	.category{
+		font-weight: bold;
+		margin-bottom: 10px;
+		font-size: 110%;
+	}
+
+	p {
+		margin-left: 15px;
+	}
+
 }
