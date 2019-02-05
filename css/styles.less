@@ -1,0 +1,132 @@
+// Variables
+@color-rouge-miage: #CA182F;
+@color-blanc-gris: #eee;
+
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-size: 14px;
+	color: #333;
+
+	p {
+		margin: 0;
+	}
+
+	a, a:hover {
+		text-decoration: none;
+	}
+
+}
+
+.jumbotron#index {
+	margin-bottom: 0;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: @color-rouge-miage;
+	min-height: 300px;
+
+	img {
+		margin: 0% auto;
+	}
+
+}
+
+.ligne {
+	.container {
+		text-align: center;
+		h2 {
+			text-transform: uppercase;
+			font-weight: 700;
+			margin: 0;
+			font-family: 'Open Sans';
+			font-size: 26px;
+			margin: 20px auto;
+		}
+	}
+}
+
+.ligne#construction {
+	background-color: #F4C430;
+}
+
+.ligne#intro{
+	background-color: #FFF;
+
+	p {
+		font-size: 130%;
+		margin: 25px 0;
+		text-align: center;
+	}
+
+}
+
+.ligne#news{
+	background-color: #357AB7;
+}
+
+.ligne#formation{
+	background-color: #16B84E;
+}
+
+.ligne#bureau{
+	background-color: @color-rouge-miage;
+}
+
+.ligne#contact{
+	background-color: #303030;
+
+	.container{
+		display: flex;
+		flex-direction: row;
+	}
+
+	.formulaire {
+		min-height: 450px;
+		width: 50%;
+	}
+
+	.reseaux {
+		font-size: 500%;
+		display: flex;
+		flex-wrap: wrap;
+		width: 50%;
+
+		@color-snapchat: #F7F400;
+		@color-facebook: #4267B2;
+		@color-linkedin: #0077B5;
+		@color-twitter: #1C9CEA;
+
+		.reseau(@couleurReseau){
+			width: 50%;
+			a{
+				width: 100%;
+				height: 100%;
+				color: @color-blanc-gris;
+				display: flex;
+				i {
+					margin: auto;
+				}
+
+			}
+			background-color: @couleurReseau;
+			&:hover {
+				background-color: @color-blanc-gris;
+				a {
+					color: @couleurReseau !important;
+				}
+			}
+		}
+
+		.snapchat {.reseau(@color-snapchat);}
+		.facebook {.reseau(@color-facebook);}
+		.linkedin {.reseau(@color-linkedin);}
+		.twitter {.reseau(@color-twitter);}
+
+
+	}
+
+}
+
+.ligne#footer{
+	background-color: #333;
+}
