@@ -2,27 +2,46 @@
 @color-rouge-miage: #CA182F;
 @color-blanc-gris: #eee;
 
-@color-snapchat: #CFCC00;
+@color-snapchat: darken(#FFFC01,5%);
 @color-facebook: #4267B2;
 @color-linkedin: #0077B5;
 @color-twitter: #1C9CEA;
 @color-darkGrey: #303030;
 @color-discord: #7389DC;
 
+
+@containerWidth-large: 1170px;
+@containerWidth-medium: 970px;
+@containerWidth-small: 750px;
+@containerWidth-xsmall: auto;
+
+
+@fontSizeBase: 14px;
+@fontSizeLineTitles: 2rem;
+@fontImportantText: 1.3rem;
+@fontNetworkLink: 5rem;
+
+
+
+
 .fontBase {
 	font-family: "Raleway", sans-serif;
-	font-size: 14px;
+	font-size: @fontSizeBase;
 }
 
 .lineTitle {
 	font-family: 'Open Sans';
-	font-size: 26px;
+	font-size: @fontSizeLineTitles;
 	text-transform: uppercase;
 	font-weight: 700;
 }
 
-body {
+
+html {
 	.fontBase;
+}
+
+body {
 	margin:0;
 	color: #333;
 	display: flex;
@@ -76,7 +95,7 @@ body {
 
 	p {
 		width: 65%;
-		font-size: 130%;
+		font-size: @fontImportantText;
 		margin: 25px auto;
 		text-align: center;
 	}
@@ -124,7 +143,7 @@ body {
 			.textDiv;
 			font-weight: bold;
 			background-color: #eee;
-			font-size: 120%;
+			font-size: @fontImportantText;
 			border-top: 0;
 		}
 
@@ -143,33 +162,70 @@ body {
 
 		.fblink {
 			.textDiv;
-			line-height: 170%;
-			vertical-align: baseline;
-			i {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			a {
 				color: @color-facebook;
-				font-size: 170%;
+				font-size: 1.7rem;
+				margin-left: 0.5rem;
 			}
 		}
 
 
-
-
 	}
 
 }
 
+.ligne#photos{
+	background-color: #4B0082;
+	padding-bottom: 40px;
+
+	#picturesBoard {
+		display: flex;
+		flex-flow: row wrap;
+		font-size: 0;
+		overflow: hidden;
+	}
+	#picturesBoard figure {
+		flex: 1;
+		margin: 0;
+		min-width: 300px;
+		max-width: 30%;
+		max-height: 400px;
+		position: relative;
+	}
+	#picturesBoard figure img {
+		width: 100%;
+		height: auto;
+		opacity: 0;
+		transition: .5s;
+	}
+	#picturesBoard figure img.halfsize {
+		flex: .5;
+		min-width: 150px;
+
+	}
+	#picturesBoard figure img.visible {
+		opacity: 1;
+	}
+}
+
 .ligne#formation{
-	background-color: #79DACA;
+	background-color: #BBD2E1;
+	
+	h2 {
+		color: #303030;
+	}
 }
 
 .ligne#bureau{
 	background-color: @color-darkGrey;
+	padding-bottom: 40px;
 
 	#trombi{
 		margin: auto;
 	}
-
-	padding-bottom: 40px;
 }
 
 .ligne#contact{
@@ -188,13 +244,13 @@ body {
 		.reseau(@couleurReseau){
 			flex:1;
 			background-color: @couleurReseau;
-			font-size: 500%;
+			font-size: @fontNetworkLink;
 			a {
 				width: 100%;
 				height: 100%;
 				color: #fff;
 				display: flex;
-				i { margin: 40px auto; }
+				i { margin: 2.8rem auto; }
 			}
 			&:hover {
 				background-color: #fff;
@@ -204,12 +260,32 @@ body {
 			}
 		}
 
-		.snapchat {.reseau(@color-snapchat);}
+
 		.facebook {.reseau(@color-facebook);}
 		.linkedin {.reseau(@color-linkedin);}
 		.twitter {.reseau(@color-twitter);}
 		.mail {.reseau(@color-rouge-miage);}
 		.discord {.reseau(@color-discord);}
+
+		.snapchat {
+			//cas spécial = affichage du snapcode plutôt que lien
+			.reseau(@color-snapchat);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			img {
+				padding: 1rem;
+				max-height: @fontNetworkLink + 2 * 1.8rem;
+				display: none;
+			}
+			&:hover {
+				background-color: @color-snapchat;
+				a { height: 0; }
+				img { display: block; }
+			}
+		}
+
 	}
 
 }
@@ -218,19 +294,23 @@ body {
 	text-align: left !important;
 	color: @color-blanc-gris;
 	background-color: #1A252F;
-	padding: 15px 0 40px 0;
+	padding: 15px 0 25px 0;
 
 	.container {
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
+		flex-wrap: wrap;
 		margin-top: 20px;
 		margin-bottom: 20px;
 
 		.col {
-			width: 33%;
+			flex: 1;
+			min-width: 25%;
 			display: flex;
 			flex-direction: row;
+			justify-content: center;
+			margin-bottom: 15px;
 
 			i {
 				padding-right: 10px;
