@@ -10,10 +10,7 @@
 @color-discord: #7389DC;
 
 
-@containerWidth-large: 1170px;
-@containerWidth-medium: 970px;
-@containerWidth-small: 750px;
-@containerWidth-xsmall: auto;
+
 
 
 @fontSizeBase: 14px;
@@ -21,6 +18,18 @@
 @fontImportantText: 1.3rem;
 @fontNetworkLink: 5rem;
 
+
+@widthMediaLarge: 1200px;
+@widthMediaMedium: 992px;
+@widthMediaSmall: 768px;
+
+@containerWidth-large: 1170px;
+@containerWidth-medium: 970px;
+@containerWidth-small: 750px;
+@containerWidth-xsmall: auto;
+
+
+@nbContactNetworks: 6;
 
 
 
@@ -213,7 +222,7 @@ body {
 
 .ligne#formation{
 	background-color: #BBD2E1;
-	
+
 	h2 {
 		color: #303030;
 	}
@@ -223,8 +232,9 @@ body {
 	background-color: @color-darkGrey;
 	padding-bottom: 40px;
 
-	#trombi{
+	img#trombi{
 		margin: auto;
+		max-width: 100%;
 	}
 }
 
@@ -234,42 +244,52 @@ body {
 	.container{
 		flex-direction: row;
 
-		.contactezNous{
+		#contactezNous{
 			.lineTitle;
 			color: #fff;
-			margin-right: 30px;
-
+			margin: 20px;
+			text-align: center;
+			max-width: 29%;
+			flex: 1;
 		}
 
-		.reseau(@couleurReseau){
+		#contactNetworks{
+			display: flex;
+			flex: 1;
+		}
+
+		.reseau{
 			flex:1;
-			background-color: @couleurReseau;
 			font-size: @fontNetworkLink;
 			a {
 				width: 100%;
 				height: 100%;
 				color: #fff;
 				display: flex;
-				i { margin: 2.8rem auto; }
+				justify-content: center;
+				i { margin: 2.8rem; }
 			}
+		}
+
+		.couleurReseau(@couleur){
+			background-color: @couleur;
 			&:hover {
 				background-color: #fff;
 				a {
-					color: @couleurReseau !important;
+					color: @couleur !important;
 				}
 			}
 		}
 
 
-		.facebook {.reseau(@color-facebook);}
-		.linkedin {.reseau(@color-linkedin);}
-		.twitter {.reseau(@color-twitter);}
-		.mail {.reseau(@color-rouge-miage);}
-		.discord {.reseau(@color-discord);}
-
-		.snapchat {
+		#facebook { .couleurReseau(@color-facebook); }
+		#linkedin { .couleurReseau(@color-linkedin); }
+		#twitter { .couleurReseau(@color-twitter); }
+		#mail { .couleurReseau(@color-rouge-miage); }
+		#discord { .couleurReseau(@color-discord); }
+		#snapchat {
+			background-color: @color-snapchat;
 			//cas spécial = affichage du snapcode plutôt que lien
-			.reseau(@color-snapchat);
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -278,6 +298,7 @@ body {
 				padding: 1rem;
 				max-height: @fontNetworkLink + 2 * 1.8rem;
 				display: none;
+				max-width: 150px;
 			}
 			&:hover {
 				background-color: @color-snapchat;
@@ -325,6 +346,72 @@ body {
 
 	p {
 		margin-left: 15px;
+	}
+
+}
+
+
+// MEDIA QUERIES
+@media screen and (max-width: @widthMediaSmall){
+	.container {
+		width: @containerWidth-xsmall !important;
+	}
+
+	.ligne#contact {
+		.container {
+			flex-wrap: wrap;
+
+			#contactezNous {
+				width: 100%;
+			}
+
+			#contactNetworks {
+				width: 100%;
+				flex: none;
+
+				.reseau {
+					width: 50%;
+					flex: none;
+				}
+
+			}
+
+		}
+	}
+}
+
+@media screen and (min-width: @widthMediaSmall){
+	.container {
+		width: @containerWidth-small !important;
+	}
+
+	.ligne#contact {
+
+		#contactNetworks {
+			flex-wrap: wrap;
+		}
+
+		.reseau {
+			width: 33%;
+			flex: none;
+		}
+	}
+}
+
+@media screen and (min-width: @widthMediaMedium){
+	.container {
+		width: @containerWidth-medium !important;
+	}
+}
+
+@media screen and (min-width: @widthMediaLarge){
+	.container {
+		width: @containerWidth-large !important;
+	}
+	.ligne#contact {
+		#contactNetworks {
+			flex-wrap: nowrap;
+		}
 	}
 
 }
